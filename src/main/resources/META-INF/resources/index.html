@@ -15,6 +15,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">
     <link rel="stylesheet" type="text/css" href="style/grid.css">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
     <!-- Custom styles for this template -->
 
 
@@ -45,7 +50,9 @@
               </span>
                 </li>
             </ul>
-        </div>
+            
+        </div>    
+            <button class="form-inline my-2 my-lg-0 btn btn-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#parameters-modal">Parameters</button>
     </div>
 </nav>
 
@@ -114,6 +121,40 @@
         </div>
     </div>
 </div>
+
+<!-- parameters modal -->
+<div class="modal fade" id="parameters-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Parameters</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="keycloakurl">Keycloak Server URL</label>
+                  <input id="url" type="text" class="form-control" id="keycloakurl" placeholder="https://app.please-open.it/auth">
+                </div>
+                <div class="form-group">
+                  <label for="realm">Realm id</label>
+                  <input id="realm" type="text" class="form-control" id="realm" placeholder="xxxx-xxxx-xxxx-xxxx">
+                </div>
+                <div class="form-group">
+                    <label for="client">Client id</label>
+                    <input id="client" type="text" class="form-control" id="client" placeholder="front-end">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="initKeycloak()" data-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- Bootstrap core JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
