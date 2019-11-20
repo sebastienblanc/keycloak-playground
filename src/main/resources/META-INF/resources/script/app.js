@@ -1,4 +1,17 @@
-var keycloak = Keycloak();
+//var keycloak = Keycloak();
+
+var url = window.localStorage.getItem("poit.url");
+var realm = window.localStorage.getItem("poit.realm");
+var client = window.localStorage.getItem("poit.client");
+$("#url").val(url)
+$("#realm").val(realm)
+$("#client").val(client)
+
+var keycloak = new Keycloak({
+    url: url,
+    realm: realm,
+    clientId: client
+}); 
 
 var initOptions = {
     responseMode: 'fragment',
@@ -15,6 +28,14 @@ keycloak.init(initOptions).success(function(authenticated) {
  keycloak.onAuthSuccess = function () {
     event('Auth Success');
 };
+
+function initKeycloak(){
+    window.localStorage.setItem("poit.url", $("#url").val());
+    window.localStorage.setItem("poit.realm", $("#realm").val());
+    window.localStorage.setItem("poit.client", $("#client").val());
+    location.reload();
+}
+
 
 function serviceCallSimple() {
     var oReq = new XMLHttpRequest();
